@@ -9,8 +9,6 @@ public class Event {
     private int capacity;
 
     private int reservedSeats;
-
-
     //Constructor
     public Event(String title, LocalDate date, int capacity) throws IllegalArgumentException, DateTimeException {
         if (!title.trim().equals("")){
@@ -81,6 +79,7 @@ public class Event {
     }
 
 
+
     @Override
     public String toString() {
         return "Event" + title + '\n' +
@@ -89,4 +88,5 @@ public class Event {
                 "reserved seats: " + reservedSeats + "\n" +
                 "available seats: " + (getCapacity() - getReservedSeats()) + "\n";
     }
+
 }

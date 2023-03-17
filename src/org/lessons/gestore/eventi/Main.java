@@ -96,12 +96,9 @@ public class Main {
 
         System.out.println(program.countEvents());
         program.addEvent(new Event("Opera", LocalDate.parse("2023-10-10"), 1000));
-        List<Event> todayEvents =  program.sortEventByDate(LocalDate.parse("2023-10-10"));
+        List<Event> todayEvents =  program.getEventsByDate(LocalDate.parse("2023-10-10"));
         System.out.println(todayEvents.toString());
-
-
-
-
+        System.out.println(program.sortEventsByDate());
 
 
         program.clearProgram();

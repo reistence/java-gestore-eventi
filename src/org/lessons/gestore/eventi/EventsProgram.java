@@ -3,6 +3,7 @@ package org.lessons.gestore.eventi;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class EventsProgram {
@@ -24,11 +25,7 @@ public class EventsProgram {
         events.add(e);
     }
 
-  /* public List<Event> getEventsByDate(){
 
-       return events.sort((a, b) -> a.getDate().compareTo(b.getDate()));
-
-    }*/
 
     public int countEvents(){
         return events.size();
@@ -38,19 +35,32 @@ public class EventsProgram {
          events.clear();
     }
 
-    public List<Event> sortEventByDate(LocalDate d){
-
+    public List<Event> getEventsByDate(LocalDate d){
         List<Event> e = new ArrayList<>();
-
         for (int i = 0; i < events.size(); i++) {
             Event current = events.get(i);
             if (((Event)current).getDate().equals(d)){
                 e.add(current);
             }
+        }
+        return e;
+    }
 
+    public String sortEventsByDate(){
+        StringBuilder s = new StringBuilder("Program:" + title + "\n" + "Scheduled events: " + "\n");
+        Collections.sort(events, new Comparator<Event>() {
+            @Override
+            public int compare(Event event1, Event event2) {
+                return event1.getDate().compareTo(event2.getDate());
+            }
+        });
+
+        for (Event e : events){
+            s.append("\n").append(e.getDate()).append(" ").append(e.getTitle()).append("\n");
         }
 
-        return e;
+        return s.toString();
+
     }
 
     @Override
