@@ -51,13 +51,15 @@ public class Main {
                 case 2:
                     System.out.println("How many reservations you want to cancel?");
                     int usrCancellations = Integer.parseInt(scan.nextLine());
-                    for (int i = 0; i < usrCancellations; i++) {
+
                         try {
+                            for (int i = 0; i < usrCancellations; i++) {
                             usrEvent.cancelReservation();
+                            }
                         } catch (NoBookingsYet | PastEventException e) {
                             System.out.println("Error: " + e.getMessage());;
                         }
-                    }
+
                     System.out.println(usrEvent.toString());
                     break;
             }
