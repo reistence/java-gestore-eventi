@@ -1,5 +1,7 @@
 package org.lessons.gestore.eventi;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class EventsProgram {
         this.title = title;
         this.events = events;
     }
+
     //G/Setters
 
 
@@ -31,16 +34,29 @@ public class EventsProgram {
         return events.size();
     }
 
-  /*  public List<Event> sortEventByDate(){
+    public void clearProgram(){
+         events.clear();
+    }
 
+    public List<Event> sortEventByDate(LocalDate d){
 
+        List<Event> e = new ArrayList<>();
 
-    }*/
+        for (int i = 0; i < events.size(); i++) {
+            Event current = events.get(i);
+            if (((Event)current).getDate().equals(d)){
+                e.add(current);
+            }
+
+        }
+
+        return e;
+    }
 
     @Override
     public String toString() {
         return "EventsProgram:" + "\n"+
                 "title:" + title + '\n' +
-                "events:" + events ;
+                "events:" + "\n"  + events ;
     }
 }
