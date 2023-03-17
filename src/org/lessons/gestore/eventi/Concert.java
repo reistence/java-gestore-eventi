@@ -12,10 +12,10 @@ public class Concert extends Event{
     private BigDecimal price;
 
     //Constructor
-    public Concert(String title, LocalDate date, int capacity, LocalTime schedule, BigDecimal price) throws IllegalArgumentException, DateTimeException {
+    public Concert(String title, LocalDate date, int capacity, String schedule, String price) throws IllegalArgumentException, DateTimeException {
         super(title, date, capacity);
-        this.price = price;
-        this.schedule = schedule;
+        this.price = new BigDecimal(price);
+        this.schedule = LocalTime.parse(schedule);
     }
     //G/Setters
     public LocalTime getSchedule() {

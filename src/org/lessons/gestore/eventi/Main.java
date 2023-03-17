@@ -1,12 +1,19 @@
 package org.lessons.gestore.eventi;
 
+import java.math.BigDecimal;
 import java.sql.SQLOutput;
+import java.text.DecimalFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Concert a = new Concert("Eminem Concert", LocalDate.parse("2023-11-11"), 100, "20:30",  "10");
+
+
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Insert a new event title: ");
@@ -41,6 +48,7 @@ public class Main {
                     int usrReservations = Integer.parseInt(scan.nextLine());
                         try {
                             for (int i = 0; i < usrReservations; i++) {
+                               /* System.out.println(i);*/
                             usrEvent.book();
                             }
                         } catch (ExceedAvailableSeatsException | PastEventException e) {

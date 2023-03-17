@@ -60,29 +60,21 @@ public class Event {
 
     //Methods
     public void book() throws ExceedAvailableSeatsException, PastEventException{
-
         if (date.isBefore(LocalDate.now())){
             throw new PastEventException("Sorry, you cannot book any seats, the event is already occurred");
         }
-        if (reservedSeats > (capacity - reservedSeats)){
+        if (reservedSeats == capacity){
             throw new ExceedAvailableSeatsException("Sorry, you cannot book any seats, we are already at full capacity");
         }
-
-       /* if (date.isAfter(LocalDate.now()) && capacity > (capacity - reservedSeats)){*/
-            reservedSeats++;
-    /*    }*/
-
-
+        reservedSeats++;
     }
 
     public void cancelReservation() throws NoBookingsYet, PastEventException{
-        if (date.isAfter(LocalDate.now()) && reservedSeats > 0 && capacity <= reservedSeats ){
             reservedSeats--;
-        }
         if (date.isBefore(LocalDate.now())){
             throw new PastEventException("Sorry, you cannot book any seats, the event is already occurred");
         }
-        if (reservedSeats == 0){
+        if (reservedSeats == 0 || reservedSeats > capacity){
             throw new NoBookingsYet("Sorry, there are no reservations to cancel");
         }
 

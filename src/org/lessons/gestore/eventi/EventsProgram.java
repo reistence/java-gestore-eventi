@@ -1,5 +1,6 @@
 package org.lessons.gestore.eventi;
 
+import java.util.Collections;
 import java.util.List;
 
 public class EventsProgram {
@@ -20,7 +21,9 @@ public class EventsProgram {
         events.add(e);
     }
 
-   /* public List<Event> getEventsByDate(){
+  /* public List<Event> getEventsByDate(){
+
+       return events.sort((a, b) -> a.getDate().compareTo(b.getDate()));
 
     }*/
 
