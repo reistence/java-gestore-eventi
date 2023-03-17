@@ -39,7 +39,7 @@ public class EventsProgram {
         List<Event> e = new ArrayList<>();
         for (int i = 0; i < events.size(); i++) {
             Event current = events.get(i);
-            if (((Event)current).getDate().equals(d)){
+            if (current.getDate().equals(d)){
                 e.add(current);
             }
         }
