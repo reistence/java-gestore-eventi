@@ -54,11 +54,9 @@ public class EventsProgram {
                 return event1.getDate().compareTo(event2.getDate());
             }
         });
-
         for (Event e : events){
             s.append("\n").append(e.getDate()).append(" ").append(e.getTitle()).append("\n");
         }
-
         return s.toString();
 
     }

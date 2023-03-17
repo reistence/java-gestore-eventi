@@ -31,7 +31,7 @@ public class Concert extends Event{
     public String toString() {
         return super.toString() + "\n" +
                 "schedule:" + getSchedule() + "\n" +
-                "price: " + getPrice() + "\n";
+                "price: €" + getPrice() + "\n";
 
     }
 }
