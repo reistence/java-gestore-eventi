@@ -19,7 +19,7 @@ public class Main {
         System.out.println("Insert a the event capacity: ");
         int capacity = Integer.parseInt(scan.nextLine());
 
-       /* try {*/
+
 
         Event usrEvent = null;
         try {
@@ -29,15 +29,16 @@ public class Main {
             System.exit(0);
         }
 
-        System.out.println("Insert: 1 to book a seat/s - 2 to cancel a reservation");
-             int usrAnswer = Integer.parseInt(scan.nextLine());
+        int usrAnswer = 0;
+        do {
+            System.out.println("Insert: 1 to book a seat/s - 2 to cancel a reservation - 3 Exit");
+             usrAnswer = Integer.parseInt(scan.nextLine());
 
 
             switch (usrAnswer){
                 case 1:
                     System.out.println("How many seats you want to book?");
                     int usrReservations = Integer.parseInt(scan.nextLine());
-
                         try {
                             for (int i = 0; i < usrReservations; i++) {
                             usrEvent.book();
@@ -45,9 +46,8 @@ public class Main {
                         } catch (ExceedAvailableSeatsException | PastEventException e) {
                             System.out.println("Error: " + e.getMessage());
                         }
-
-
-                    break;
+                    System.out.println(usrEvent.toString());
+                         break;
                 case 2:
                     System.out.println("How many reservations you want to cancel?");
                     int usrCancellations = Integer.parseInt(scan.nextLine());
@@ -58,14 +58,14 @@ public class Main {
                             System.out.println("Error: " + e.getMessage());;
                         }
                     }
+                    System.out.println(usrEvent.toString());
                     break;
             }
+        } while (usrAnswer != 3);
 
-                System.out.println(usrEvent.toString());
 
-         /*   } catch (Exception e){
-                System.out.println("Error: " + e.getMessage());
-            }*/
+        System.out.println(usrEvent.toString());
+
 
 
 

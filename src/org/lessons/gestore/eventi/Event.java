@@ -13,7 +13,12 @@ public class Event {
 
     //Constructor
     public Event(String title, LocalDate date, int capacity) throws IllegalArgumentException, DateTimeException {
-        this.title = title;
+        if (!title.trim().equals("")){
+            this.title = title;
+        }else {
+            throw new IllegalArgumentException("Invalid title");
+        }
+
         if (date.isAfter(LocalDate.now())){
             this.date = date;
         } else {
@@ -56,15 +61,17 @@ public class Event {
     //Methods
     public void book() throws ExceedAvailableSeatsException, PastEventException{
 
-        if (date.isAfter(LocalDate.now()) && capacity > reservedSeats){
-            reservedSeats++;
-        }
         if (date.isBefore(LocalDate.now())){
             throw new PastEventException("Sorry, you cannot book any seats, the event is already occurred");
         }
-        if (reservedSeats > capacity){
+        if (reservedSeats > (capacity - reservedSeats)){
             throw new ExceedAvailableSeatsException("Sorry, you cannot book any seats, we are already at full capacity");
         }
+
+       /* if (date.isAfter(LocalDate.now()) && capacity > (capacity - reservedSeats)){*/
+            reservedSeats++;
+    /*    }*/
+
 
     }
 
@@ -88,6 +95,6 @@ public class Event {
                 "date: " + date + "\n" +
                 "capacity:" + capacity + "\n" +
                 "reserved seats: " + reservedSeats + "\n" +
-                "available seats: " + (getCapacity() - getReservedSeats());
+                "available seats: " + (getCapacity() - getReservedSeats()) + "\n";
     }
 }
